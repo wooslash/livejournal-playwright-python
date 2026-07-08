@@ -76,6 +76,19 @@ Each test step is an Allure step; a screenshot is attached automatically on
 failure. Needs the [Allure CLI](https://allurereport.org/docs/install/)
 (`brew install allure`).
 
+## Docker
+
+Uses the official Playwright image with browser engines preinstalled:
+
+```bash
+docker build -t lj-playwright .
+docker run --rm --env-file .env -e HEADLESS=true \
+  -v "$PWD/allure-results:/app/allure-results" lj-playwright
+```
+
+Credentials come from `.env`; `-e HEADLESS=true` overrides the file inside the
+container. Mount `allure-results` to keep the report data on the host.
+
 ## Layout
 
 ```

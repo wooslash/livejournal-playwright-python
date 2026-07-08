@@ -15,6 +15,8 @@ per-step assertions, RU/EN localization, and Allure reporting.
 - A LiveJournal account **with a confirmed email**. `LJ_USERNAME` is the
   **username**, not the email.
 - Optional: [Allure CLI](https://allurereport.org/docs/install/) to render reports.
+- Optional: Docker to run everything containerised — no local Python or browser
+  install needed (see [Docker](#docker)).
 
 ## Setup
 
@@ -104,6 +106,9 @@ pages/
   post_editor_page.py     /post/ editor — textarea title, Draft.js body, 2-step publish
 tests/
   test_publish_entry.py   the E2E test, @smoke/@e2e markers, per-step assertions
+Dockerfile                official Playwright image + deps
+.dockerignore             keeps .env / venv / caches out of the image
+run.sh                    pytest + allure serve (auto-opens the report)
 ```
 
 ## Design notes
